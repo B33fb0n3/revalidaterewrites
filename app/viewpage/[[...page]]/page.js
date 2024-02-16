@@ -1,5 +1,6 @@
 import React from "react";
 import {notFound} from "next/navigation";
+import RevalidateButton from "@/app/viewpage/[[...page]]/components/RevalidateButton";
 
 export const dynamic = 'force-static'
 
@@ -13,11 +14,10 @@ export default async function CustomerPage({params}) {
     const result = await fetch('https://worldtimeapi.org/api/timezone/America/Chicago');
     const data = await result.json();
 
-    // revalidate: http://localhost:3000/revalidate
-
     return (
         <>
             <p>{data.datetime}</p>
+            <RevalidateButton />
         </>
     )
 }
