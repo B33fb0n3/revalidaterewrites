@@ -1,8 +1,9 @@
-import {revalidatePath} from "next/cache";
+import {revalidatePath, revalidateTag} from "next/cache";
 import {NextResponse} from "next/server";
 
 export async function POST() {
-    revalidatePath(`/viewpage/somehost.com/helpi`)
+    revalidatePath(`/helpi`)
+    revalidateTag(`somehost.com`)
     return NextResponse.json({
         now: Date.now(),
         revalidated: true,

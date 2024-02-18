@@ -2,7 +2,9 @@ import { NextResponse } from 'next/server'
 
 export function middleware(request) {
     let host = request.nextUrl.host;
-    host = "somehost.com";
+    const {searchParams} = new URL(request.url)
+
+    host = searchParams.get("host") ?? "somehost.com";
     return NextResponse.rewrite(new URL('/viewpage/' + host + request.nextUrl.pathname, request.url))
 }
 
