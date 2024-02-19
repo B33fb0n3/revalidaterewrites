@@ -1,7 +1,7 @@
 import React from "react";
-import { notFound } from "next/navigation";
+import {notFound} from "next/navigation";
 import RevalidateButton from "@/app/viewpage/[[...page]]/components/RevalidateButton";
-import { unstable_cache } from "next/cache";
+import {unstable_cache} from "next/cache";
 
 export const dynamic = "force-static";
 
@@ -17,10 +17,7 @@ export default async function CustomerPage({ params }) {
     [hostKey],
     { tags: [hostKey] }
   );
-  if (
-    pagePath !== "helpi" ||
-    !(hostKey == "somehost.com" || hostKey == "someotherhost.com")
-  )
+  if (pagePath !== "helpi" || !(hostKey == "somehost.com" || hostKey == "someotherhost.com"))
     return notFound();
   const data = await getTime();
 
